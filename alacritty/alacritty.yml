@@ -1,0 +1,35 @@
+window:
+  padding:
+    x: 5
+    y: 5
+
+background_opacity: 0.75
+
+font:
+  normal:
+    family: "JetBrainsMono Nerd Font Mono"
+    style: Regular
+  bold:
+    family: JetBrainsMono Nerd Font Mono
+    style: Bold
+
+colors:
+  normal:
+    black: "#000000"
+    red: "#a60001"
+    green: "#00bb00"
+    yellow: "#fecd22"
+    blue: "#3a9bdb"
+    magenta: "#bb00bb"
+    cyan: "#00bbbb"
+    white: "#bbbbbb"
+  bright:
+    black: "#555555"
+    red: "#ff0003"
+    green: "#93c863"
+    yellow: "#fef874"
+    blue: "#a1d7ff"
+    magenta: "#ff55ff"
+    cyan: "#55ffff"
+    white: "#ffffff"
+

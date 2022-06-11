@@ -1,0 +1,328 @@
+[module/spacing]
+type = custom/text
+content = " "
+content-background = ${color.tp}
+
+[module/spacing1]
+type = custom/text
+content = "     "
+content-background = ${color.tp}
+
+[module/spacing2]
+type = custom/text
+content = "  "
+content-background = ${color.tp}
+
+[module/sep]
+type = custom/text
+;content = 
+content = " "
+
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.bg1}
+content-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ 
+
+[module/LD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-background = ${color.bg0}
+content-foreground = ${color.bg1}
+
+[module/RD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-background = ${color.violet}
+content-foreground = ${color.red}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/RLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg2}
+content-foreground = ${color.red}
+
+[module/RRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg2}
+content-foreground = ${color.red}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/WLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg2}
+content-foreground = ${color.fg1}
+
+[module/WRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg2}
+content-foreground = ${color.fg1}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/CLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.cyan}
+
+[module/CRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.cyan}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/MLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.red}
+
+[module/MRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.red}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/YLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.red}
+
+[module/YLD1]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.red}
+
+[module/YRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.yellow}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/GLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.violet}
+
+[module/GRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.violet}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/BLD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.violet}
+content-foreground = ${color.red}
+
+[module/BRD]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.red}
+
+[module/BRD1]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.red}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/YPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.bg0}
+
+[module/CPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.fg0}
+content-foreground = ${color.violet}
+
+[module/GPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.violet}
+content-foreground = ${color.violet}
+
+[module/GPL1]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.red}
+content-foreground = ${color.violet}
+
+[module/RPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.violet}
+content-foreground = ${color.red}
+
+[module/MPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.blue}
+content-foreground = ${color.cyan}
+
+[module/GMPL]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.red}
+content-foreground = ${color.green}
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+
+[module/leftArrow]
+type = custom/text
+content = 
+content-foreground = ${color.red}
+
+[module/rightArrow]
+type = custom/text
+content = 
+content-foreground = ${color.red}
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/LCBT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.blue}
+
+[module/RCBT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.blue}
+
+[module/LCRT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.red}
+
+[module/RCRT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.red}
+
+[module/LC0T]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.bg0}
+
+[module/RC0T]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.bg0}
+
+[module/LCB0]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.blue}
+
+[module/LCVT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.violet}
+
+[module/RCVT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.violet}
+
+
+[module/RCR0]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.bg0}
+content-foreground = ${color.red}
+
+
+
+
+[module/spacing-bg0]
+type = custom/text
+content = "  "
+content-background = ${color.bg0}
+
+[module/spacing-blue]
+type = custom/text
+content = "  "
+content-background = ${color.blue}
+
+[module/spacing-violet]
+type = custom/text
+content = "  "
+content-background = ${color.violet}
+
+[module/spacing-red]
+type = custom/text
+content = "  "
+content-background = ${color.red}
+

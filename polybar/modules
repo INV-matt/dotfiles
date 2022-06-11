@@ -1,0 +1,186 @@
+[module/pulseaudio]
+type = internal/pulseaudio
+
+
+format-volume-prefix = %{T2} %{T-} 
+format-volume-prefix-foreground = ${color.fg0}
+format-volume-prefix-background = ${color.violet}
+format-volume = <label-volume>
+
+label-volume = %percentage%%
+label-volume-background = ${color.violet}
+
+label-muted = %{T2} %{T-} 0%
+label-muted-foreground = ${color.disabled}
+label-muted-background = ${color.violet}
+
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = %H:%M
+date-alt = %d / %m / %Y, %H:%M.%S
+
+label = %date%
+label-background = ${color.violet}
+label-foreground = #ffffff ;${color.fg0}
+
+
+
+[module/i3]
+type = internal/i3
+
+strip-wsnumbers = true
+
+pin-workspaces = true
+
+index-sort = true
+
+enable-click = false
+
+enable-scroll = false
+
+wrapping-scroll = false
+
+reverse-scroll = false
+
+fuzzy-match = true
+ws-icon-0 = 1
+ws-icon-1 = 2
+ws-icon-2 = 3
+ws-icon-3 = 4
+ws-icon-4 = 5
+ws-icon-5 = 6
+ws-icon-6 = 7
+ws-icon-7 = 8
+ws-icon-8 = 9
+ws-icon-9 = 0
+
+; ws-icon-0 = 1;
+; ws-icon-1 = 2;
+; ws-icon-2 = 3;
+; ws-icon-3 = 4;
+; ws-icon-4 = 5;
+; ws-icon-5 = 6;
+; ws-icon-6 = 7;
+; ws-icon-7 = 8;
+; ws-icon-8 = 9;
+; ws-icon-9 = 0;
+; ws-icon-default = ♟
+
+
+format = <label-state> <label-mode>
+label-background = ${color.red}
+
+label-mode = %mode%
+label-mode-padding = 1.2
+label-mode-foreground = #000
+label-mode-background = ${color.red}
+
+
+label-focused = %index%
+label-focused-foreground = #ffffff
+
+label-focused-background = ${color.red}
+label-focused-underline= ${color.fg0}
+
+label-occupied-background = ${color.red}
+
+label-focused-padding = 2
+
+
+[module/polywins]
+type = custom/script
+exec = ~/.config/polybar/polywins.sh 2>/dev/null
+tail = true
+
+format = <label>
+format-background = ${color.bg0}
+
+label = %output%
+label-padding = 1
+
+[module/topWindow]
+type = internal/xwindow
+label = %title:0:40:...%
+label-foreground = #ffffff
+label-background = ${color.bg0}
+
+
+
+[module/powermenu]
+type = custom/text
+content = 
+content-foreground = ${color.fg1}
+click-left = exec powermenu.sh
+content-background = ${color.violet}
+
+
+[module/spotify]
+type = custom/script
+tail = true
+interval = 1
+; prefix symbol is shown before the text
+format-prefix = "" 
+format = <label>
+exec = ~/.config/polybar/scripts/scroll_spotify_status.sh
+label-background = ${color.bg0}
+;
+
+[module/spotify-prev]
+type = custom/script
+exec = echo ""
+format = <label>
+click-left = playerctl previous #-p spotify
+label-background = ${color.blue}
+
+
+[module/spotify-play-pause]
+type = custom/ipc
+hook-0 = echo ""
+hook-1 = echo ""
+initial = 1
+
+click-left = playerctl play-pause #-p spotify
+background = ${color.blue}
+
+
+[module/spotify-next]
+type = custom/script
+exec = echo ""
+format = <label>
+click-left = playerctl next #-p spotify
+label-background = ${color.blue}
+
+[module/spotify-playpause-v2]
+type = custom/script
+exec = echo ""
+format = <label>
+click-left = playerctl play-pause #-p spotify
+label-background = ${color.blue}
+
+[module/xworkspaces]
+type = internal/xworkspaces
+label-active = %name%
+label-active-background = ${color.red}
+label-active-foreground = ${color.fg0}
+label-active-underline = ${color.fg0}
+label-active-padding = 1
+label-occupied = %name%
+label-occupied-padding = 1
+label-occupied-background = ${color.red}
+label-occupied-foreground = ${color.fg1}
+label-urgent = %name%
+label-urgent-background = ${color.red}
+label-urgent-padding = 1
+label-empty = %name%
+label-empty-foreground = ${color.red}
+label-empty-padding = 1
+
+[module/kdeconnect]  
+type = custom/script  
+exec = "~/.config/polybar/pb-kdeconnect.sh -d"  
+tail = true
+background = ${color.violet}
