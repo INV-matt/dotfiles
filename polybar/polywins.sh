@@ -13,11 +13,11 @@ inactive_underline=
 
 separator=""
 show="icon" # options: window_title, window_class, window_classname, icon
-forbidden_classes="Polybar"
+forbidden_classes="Polybar Dunst"
 empty_desktop_message="Mod+D to open rofi"
 
 char_limit=20
-max_windows=4
+max_windows=6
 char_case="normal" # normal, upper, lower
 add_spaces="true"
 resize_increment=16

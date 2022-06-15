@@ -246,6 +246,20 @@ content-font = 3
 content-background = ${color.tp}
 content-foreground = ${color.blue}
 
+[module/LCCT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.cyan}
+
+[module/RCCT]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.tp}
+content-foreground = ${color.cyan}
+
 [module/LCRT]
 type = custom/text
 content = "%{T3}%{T-}"
