@@ -1,0 +1,191 @@
+(defwidget music []
+  (box
+    :orientation "v"
+    :space-evenly false
+    :spacing 0
+    :halign "fill"
+    :valign "fill"
+    :class "music_container"
+    :hexpand "false"
+    :vexpand "false"
+    (box
+      :style "background-image: url('${ music_art }');"
+      :class "music_art"
+      :vexpand "false"
+      :hexpand "false"
+    :width 10)
+    (box
+      :class "music_player"
+      :orientation "v"
+      :valign "center"
+      :halign "fill"
+      :width 100
+      :hexpand true
+      :space-evenly false
+      :spacing 12
+      (box
+        :orientation "v"
+        :class "music_info"
+        :valign "fill"
+        :halign "center"
+        :vepand false
+        :hexpand false
+        (label
+          :class "title"
+          :limit-width 20
+        :text title)
+        (label :class "artist" :text artist))
+      (box
+        :orientation "h"
+        :space-evenly "false"
+        :valign "center"
+        :halign "center"
+        :spacing 20
+        (button :class "prev" :onclick "playerctl previous" (label  :text "󰙤"))
+        (button :class "plpause" :onclick "playerctl play-pause" (label :text playpause))
+        (button :class "next" :onclick "playerctl next" (label :text "󰙢")))
+      (box
+        (scale :class "mus_scale" :width 100 :min 0 :max 101 :active false :value pos ))
+    )
+  )
+)
+
+(defwidget pc_info []
+  (box :class "pc_info"
+    :orientation "v"
+    :hexpand true
+    (box :class "info"
+      :orientation "h"
+      :space-evenly false
+      :spacing 16
+      (label :class "info_icon" :text "")
+      (label :hexpand true :halign "center" :class "l_info" :text "arch"))
+    (box :class "info"
+      :orientation "h"
+      :space-evenly false
+      :spacing 16
+      (label :class "info_icon" :text "")
+      (label :hexpand true :halign "center" :class "l_info" :text "bspwm"))
+    (box :class "info"
+      :orientation "h"
+      :space-evenly false
+      :spacing 16
+      (label :class "info_icon" :text "")
+      (label :hexpand true :halign "center" :class "l_info" :text pack))
+    (box :class "info"
+      :orientation "h"
+      :space-evenly false
+      :spacing 16
+      (label :class "info_icon" :text "")
+      (label :hexpand true :halign "center" :class "l_info" :text up))
+    (box :class "info"
+      :orientation "h"
+      :space-evenly false
+      :spacing 16
+      (label :class "info_icon" :text "")
+      (label :hexpand true :halign "center" :class "l_info" :text "5600G"))))
+
+(defwidget btns []
+  (box :class "btns"
+    :orientation "v"
+    :spacing 8
+    :hexpand false
+    
+    (box
+      :orientation "h"
+      :spacing 8
+      (button :class "btn" :onclick "thunar ~ &" "")
+      (button :class "btn" :onclick "code" ""))
+    (box
+      :orientation "h"
+      :spacing 8
+      (button :class "btn" :onclick "firefox " "")
+      (button :class "btn" :onclick "firefox -P Scuola &" ""))
+    (box
+      :orientation "h"
+      :spacing 8
+      (button :class "btn" :onclick "discord &" "ﭮ")
+      (button :class "btn" :onclick "python3 /home/matteo/.config/eww/scripts/music.py --switch" ""))))
+
+(defwidget info&btns []
+  (box :orientation "v"
+    :space-evenly false
+    :spacing 16
+    :class "info_btns"
+    (pc_info)
+    (btns)))
+
+(defwidget stats []
+  (box :class "stats_container"
+    :orientation "v"
+    :spacing 8
+    (box :class "stat"
+      :orientation "h"
+      :space-evenly false
+      (scale :min 0 :max 101 :active false :value cpu :class "scale-cpu" :width 196 )
+      (label :text "" :class "stat_icon"))
+    (box :class "stat"
+      :orientation "h"
+      :space-evenly false
+      (scale :min 0 :max 101 :active false :value mem :class "scale-mem" :width 196 )
+      (label :text "﬙" :class "stat_icon"))))
+
+(defwidget sliders []
+  (box :class "stats_container"
+    :orientation "v"
+    :spacing 8
+    (box :class "stat "
+      :orientation "h"
+      :space-evenly "false"
+      (scale :min 0 :max 100 :active true :value volpercent :onchange "python3 /home/matteo/.config/eww/scripts/my_vol.py set {}" :class "scale-vol" :width 196 )
+      (eventbox
+        :onclick "python3 /home/matteo/.config/eww/scripts/my_vol.py mute"
+        (label :text volicon :class "stat_icon")))
+    (box :class "stat "
+      :orientation "h"
+      :space-evenly "false"
+      (scale :min 0 :max 100 :active true :value brightness :onchange "python3 /home/matteo/.config/eww/scripts/sys_info.py --set-bright {}" :class "scale-vol" :width 196 )
+      (eventbox
+        :onclick "xrandr --output HDMI-A-0 --brightness 1"
+        (label :text "" :class "stat_icon")))))
+
+(defwidget stats&sliders []
+  (box :class "stats_container"
+    :orientation "v"
+    :spacing 8
+    (box :class "stat"
+      :orientation "h"
+      :space-evenly false
+      (scale :min 0 :max 101 :active false :value cpu :class "scale-cpu" :width 440 )
+      (label :text "" :class "stat_icon"))
+    (box :class "stat"
+      :orientation "h"
+      :space-evenly false
+      (scale :min 0 :max 101 :active false :value mem :class "scale-mem" :width 440 )
+      (label :text "﬙" :class "stat_icon"))
+    (box :class "stat "
+      :orientation "h"
+      :space-evenly "false"
+      (scale :min 0 :max 100 :active true :value volpercent :onchange "python3 /home/matteo/.config/eww/scripts/my_vol.py set {}" :class "scale-vol" :width 440 )
+      (eventbox
+        :onclick "python3 /home/matteo/.config/eww/scripts/my_vol.py mute"
+        (label :text volicon :class "stat_icon")))
+    (box :class "stat "
+      :orientation "h"
+      :space-evenly "false"
+      (scale :min 0 :max 100 :active true :value brightness :onchange "python3 /home/matteo/.config/eww/scripts/sys_info.py --set-bright {}" :class "scale-vol" :width 440 )
+      (eventbox
+        :onclick "xrandr --output HDMI-A-0 --brightness 1"
+        (label :text "" :class "stat_icon")))))
+
+(defwidget stats_widgets []
+  (box
+    :class "widgets"
+    :space-evenly false
+    :orientation "v"
+    (box :orientation "h"
+      :spacing 16
+      (music)
+      (info&btns))
+    (stats&sliders)
+  ))

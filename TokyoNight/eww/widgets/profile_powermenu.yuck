@@ -1,0 +1,66 @@
+(defwidget time []
+  (box :orientation "h"
+    :space-evenly false
+    :halign "center"
+    :spacing 16
+    (box :orientation "v" :class "date" :space-evenly false :spacing 4
+      (label :text month  :class "month")
+      (label :text daynum :class "daynum"))
+    (box :orientation "v" :class "w_time" :hexpand true :space-evenly false :spacing 4 :width 256
+      (label :xalign 0  :text day :class "day")
+      (label :xalign 0:text "${hour}:${mins} ${ampm}" :class "time"))
+  )
+)
+
+(defwidget profile []
+  (box
+    :orientation "v"
+    :space-evenly false
+    :class "profile"
+    :halign "fill"
+    :vexpand true
+    
+    (box
+      :class "pfp"
+      :width 10
+      :vexpand true
+      
+    )
+    (box
+      :class "p_name"
+      (label :text "INVmatt" )
+    )
+  )
+)
+
+(defwidget w_powermenu []
+  (box :class "w_powermenu"
+    :orientation "v"
+    :spacing 8
+    :hexpand true
+    
+    (box
+      :spacing 8
+      :orientation "h"
+      (button :class "sq-btn btn" :onclick "systemctl poweroff" "")
+      (button :class "sq-btn btn" :onclick "systemctl reboot" ""))
+    (box
+      :spacing 8
+      :orientation "h"
+      (button :class "sq-btn btn" :onclick "bspc quit" "﫼")
+      (button :class "sq-btn btn" :onclick "systemctl suspend" ""))))
+
+
+(defwidget pf&pm []
+  (box :orientation "h" :space-evenly false :hexpand true :spacing 16
+    (profile)
+    (w_powermenu)))
+
+(defwidget clock_widgets []
+  (box
+    :class "clock_widgets"
+    :space-evenly false
+    :orientation "v"
+    :spacing 8
+    (time)
+    (pf&pm)))

@@ -1,0 +1,117 @@
+configuration {
+    display-emoji: "ﲃ";
+    emoji-display-format: "{name}";
+    font: "FiraCode Nerd Font Mono 14";
+    show-icons: false;
+    icon-theme: "Papirus";
+}
+
+//@import "~/.cache/wal/colors-rofi-dark"
+@import "./themes/tokyo-night.rasi"
+
+
+mainbox {
+    children: [/*imagebox,*/ main];
+    orientation: horizontal;
+}
+
+window {
+    width: 15%;
+	transparency: "real";
+    border-radius: 16px;
+    location: center;
+    anchor: center;
+    //border: 0px;
+    //background-color: @bg;
+}
+
+imagebox {
+    //background-image: url("~/.config/rofi/imgs/night_streetlamp.png", height);
+    anchor: center;
+    location: center;
+    margin: 0 10 0 0;
+    border-radius: 16px;
+    background-color: @bg;
+}
+
+main {
+    children: [inputbar, listview];
+    
+
+}
+
+inputbar{
+    children: [prompt, entry];
+    padding: 12px 10px;
+    border-radius: 25px 25px 0 0 ;
+    
+}
+
+entry {
+    background-color: @bg-alt;
+    color: @fg;
+    padding: 12;
+    border-radius: 25px;
+    placeholder: "Search...";
+    vertical-align: 0.5;
+
+}
+
+
+prompt {
+    background-color: transparent;
+    font: "FiraCode Nerd Font Mono Bold 28";
+    padding: 0 12;
+    text-color: @foreground;
+    border-radius: 25px;
+    margin: 0 4px 0 0;
+
+}
+
+listview {
+    lines: 8;
+    columns: 4;
+    background-color: transparent;
+    //background-image: url("~/.config/rofi/imgs/night_streetlamp.png", height);
+    border-radius: 16px;
+    
+}
+
+element {
+    padding: 5;
+    text-color: @fg-alt;
+    background-color: transparent;
+    orientation: vertical;
+}
+
+element.selected {
+    background-color: @bg-selected;
+    text-color:       @fg-selected;
+    border-radius: 10px;
+}
+
+element normal.normal {
+    background-color: inherit;
+}
+element.alternate.normal {
+    background-color: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+element-icon {
+    size: 64px;
+    background-color: transparent;
+}
+
+
+/** {
+    border: 0;
+    margin: 0;
+}
+*/

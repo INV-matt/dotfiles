@@ -1,0 +1,165 @@
+/**
+* @name Comfy Tokyo Night
+* @author INVmatt#9716
+* @description Modified Comfy theme to match Tokyo Night
+* @version 1.0.0
+
+*/
+
+@import "https://comfy-themes.github.io/Discord/betterdiscord/main.css";
+
+/* ═══════『 ⚠️・Important tips 』═══════
+*
+*   ➥ To comment or uncomment a line you need to put those "/" and "*" characters as you can see at the beginning and ending of my comments.
+*      (You don't need to put a * at each line like I do, it's just for readability). See more here : https://developer.mozilla.org/en-US/docs/Web/CSS/Comments
+*
+*   ➥ You can play with the values and see how it goes, don't delete "px" after the value if you don't have knowledge of CSS.
+*
+*   ➥ To change the colors, replace the HEX code with the one you picked here : https://htmlcolorcodes.com
+*/
+
+/* ═══════『 🚫 ・ No scrollbars 』- Comment the line below if you want the scrollbar back */
+@import "https://comfy-themes.github.io/Discord/betterdiscord/no-scrollbar.css";
+
+/* ═══════『 🎵 ・ Better SpotifyControls seek bar 』- Comment the line below if you want the scrollbar back */
+@import "https://comfy-themes.github.io/Discord/betterdiscord/better-spotify.css";
+
+:root {
+  /* ═══════『 💨 ・ Animations 』- If you don't want a high CPU usage, comment the line below */
+  --disable-animations: 2s channel-unread infinite;
+
+  /* ═══════『 ⚙️ / 🎤 / 🎧 ・ User button 』═══════
+*
+*   ➥ A higher value means more space between the icons and a lower ...
+*
+*    ℹ️ : If you want to revert those to the old area, join the support server and check #css-snippets
+*
+*/
+
+  /* Spacing - Default value : 8px */
+  --user-buttons-spacing: 4px;
+
+  /* Color - Default value : #096DC0 */
+  --user-buttons-color: #7aa2f7;
+
+  /* ═══════『 ⭕ Roundness settings 』═══════
+*
+*    ➥ A higher value means more rounded corners and a lower ...
+*       0 ➜ Square
+*       25 ➜ Circle
+*/
+
+  /* Avatars - Default value : 5px */
+  --avatar-radius: 8px;
+
+  /* Status - Default value : 3px */
+  --status-radius: 4px;
+
+  /* Servers - Default value : 8px */
+  --server-radius: 8px;
+
+  /* ═══════『 😃 Colored emoji picker 』═══════
+*   Change the value to "100%" if you want the default one */
+
+  --colored-emoji: grayscale(0%);
+
+  /* ═══════『 📜 Server/channel list 』═══════ */
+
+  /* Mention - Default value : #F04747 */
+  --mention-color: #f7768e;
+
+  /* Unread - Default value : #7289DA */
+  --unread-color: #7dcfff;
+
+  /*  『 🔴 Mention colors in chat 』 */
+
+  /* Bar on the right - Default value : #C66262 */
+  --mention-color-bar: #f7768e;
+
+  /* Background - Default value : #C662621F */
+  --mention-color-background: #c662621f;
+
+  /* On hover - Default value : #C6626226 */
+  --mention-color-hover: #c6626226;
+
+  /* ═══════『 💬 Chat buttons 』═══════ */
+
+  /* Default value : #7289DA */
+  --chat-buttons: #7dcfff;
+
+  /* ═══════『 💬 SpotifyControls seek bar 』═══════
+*   ℹ️ : If you don't have the plugin : https://betterdiscord.app/plugin/SpotifyControls */
+
+  /* Default value : #1EDC62 */
+  --spotify-color: #7dcfff;
+
+  /* ═══════『 🟢 Status 』═══════ */
+
+  /* Online - Default value : #43B581 */
+  --online: #9ece6a;
+
+  /* Idle - Default value : #FAA61A */
+  --iddle: #e0af68;
+
+  /* Do Not Disturb - Default value : #F04747 */
+  --dnd: #f7768e;
+
+  /* Offline - Default value : #747F8D */
+  --offline: #a9b1d6;
+
+  /* Streaming - Default value : #593695 */
+  --streaming: #bb9af7;
+
+  /* ═══════『 🔰 User popout 』═══════ */
+
+  /* Playing wave color */
+  --playing: #7dcfff;
+
+  /* Listening wave color */
+  --listening: #b4f9f8;
+
+  /* Role circle - Default value : 5px */
+  --role-circle: 5px;
+
+  /* ═══════『 🗑️ Discord logo 』═══════
+*   Set it to "block" if you still want it */
+
+  --discord-logo: none;
+}
+
+.theme-dark {
+  --background-primary: #1a1b26;
+  --background-secondary: #24283b;
+  --background-secondary-alt: #21202e;
+  --background-tertiary: #26233a;
+  --background-mobile-primary: #1a1b26;
+  --background-mobile-secondary: #24283b;
+  --channeltextarea-background: #21202e;
+  --background-accent: #7dcfff;
+  --background-message-hover: transparent;
+  --background-modifier-hover: #00000010;
+  --background-modifier-active: #0000001a;
+  --background-modifier-selected: #0000001f;
+  --deprecated-card-bg: #1a1b2663;
+  --background-floating: #26233a;
+  --deprecated-quickswitcher-input-background: #26233a;
+  --elevation-low: none;
+  --scrollbar-auto-thumb: #121722;
+  --scrollbar-auto-track: #21202e;
+  --scrollbar-thin-thumb: #141925;
+  --activity-card-background: #26233a;
+  --input-background: #24283b;
+}
+
+.theme-light {
+  --background-primary: #1a1b26;
+  --background-secondary: #24283b;
+  --background-secondary-alt: #21202e;
+  --background-tertiary: #26233a;
+  --background-accent: #7dcfff;
+  --background-modifier-hover: #262b41;
+  --background-modifier-active: #262b41;
+  --header-primary: #fff;
+  --header-secondary: #b1b5b9;
+  --text-normal: #8e9297;
+}

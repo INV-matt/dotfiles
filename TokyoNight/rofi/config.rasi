@@ -1,0 +1,144 @@
+configuration {
+    display-drun: "";
+    display-window: "";
+    display-run: "";
+    drun-display-format: "{icon} {name}";
+    window-format: "{w}: {t}";
+    font: "FantasqueSansMono Nerd Font Mono Regular 10";
+    modi: "drun,window,run";
+    show-icons: true;
+    icon-theme: "Papirus";
+
+    text-color: @fg;
+}
+
+//@import "~/.cache/wal/colors-rofi-dark"
+@import "./themes/tokyo-night.rasi"
+
+
+mainbox {
+  children: [/*imagebox,*/ main];
+  orientation: horizontal;
+  background-color: @bg;
+}
+
+window {
+  width: 35%;
+  transparency: "real";
+  border-radius: 4px;
+  location: center;
+  anchor: center;
+  background-color: @bg;
+  border: 0;
+
+  //border: 0px;
+  //background-color: @bg;
+}
+
+imagebox {
+  //background-image: url("~/.config/rofi/imgs/night_streetlamp.png", height);
+  anchor: center;
+  location: center;
+  margin: 0 10 0 0;
+  border-radius: 4px;
+
+}
+
+main {
+  children: [inputbar, listview];
+
+
+}
+
+inputbar{
+  children: [prompt, entry];
+  padding: 12px 10px;
+  border-radius: 4px 4px 0 0 ;
+
+}
+
+entry {
+  background-color: @bg-alt;
+  text-color: @fg;
+  padding: 12;
+  border-radius: 4px;
+  placeholder: "Search...";
+  vertical-align: 0.5;
+
+}
+
+
+prompt {
+  background-color: transparent;
+  font: "FiraCode Nerd Font Mono Bold 28";
+  padding: 0 12;
+  text-color: @fg;
+  border-radius: 4px;
+  margin: 0 4px 0 0;
+
+}
+
+listview {
+  lines: 4;
+  columns: 6;
+  background-color: transparent;
+  background-image: url("~/.config/rofi/imgs/night_streetlamp.png", height);
+  border-radius: 4px;
+  padding: 0;
+  border: 0;
+  fixed-height: true;
+  fixed-columns: true;    
+}
+
+element {
+  padding: 5;
+  text-color: @fg-alt;
+  background-color: transparent;
+  orientation: vertical;
+
+}
+
+element.selected.normal {
+  background-color: @bg-sel;
+  text-color:       @fg;
+  border-radius: 4px;
+}
+
+element normal.normal {
+  background-color: inherit;
+  text-color: @fg;
+
+}
+element.alternate.normal {
+  background-color: inherit;
+  text-color: @fg;
+
+}
+
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+element-icon {
+  size: 64px;
+  background-color: transparent;
+}
+
+#element.normal.active {
+  background-color: @bg-alt;
+  text-color: @fg-alt;
+}
+
+#element.selected.active {
+  background-color: @high;
+  text-color: @fg-alt;
+}
+
+/** {
+border: 0;
+margin: 0;
+}
+*/

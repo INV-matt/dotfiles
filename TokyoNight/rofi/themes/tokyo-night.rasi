@@ -1,0 +1,16 @@
+* {
+    bg: #1a1b26;
+    bg-alt: #24283b;
+    bg-sel: #24283bD0;
+
+    fg: #a9b1d6;
+    fg-alt: #c0caf5;
+
+    high: #24283b;
+
+    background-color: @bg;
+}
+
+#scrollbar {
+    handle-width: 0px;
+}

@@ -1,0 +1,117 @@
+configuration {
+  show-icons: false;
+}
+
+@import "~/.config/rofi/themes/tokyo-night.rasi"
+
+*{
+  /* Resolution : 1920x1080 */
+  mainbox-spacing:             100px;
+  mainbox-margin:              100px 300px;
+  message-margin:              0px 400px;
+  message-padding:             15px;
+  message-border-radius:       100%;
+  listview-spacing:            48px;
+  element-padding:             64px 48px;
+  element-border-radius:       64px;
+
+  prompt-font:                 "FantasqueSansMono Mono Bold 64";
+  textbox-font:                "FantasqueSansMono Nerd Font Mono Regular 16";
+  element-text-font:           "FantasqueSansMono Nerd Font Mono Regular 64";
+
+  background-window:           black/5%;
+  background-normal:           white/5%;
+  background-selected:         white/15%;
+  foreground-normal:           @fg;
+  foreground-selected:         @fg-alt;
+}
+
+
+
+window {
+  transparency: "real";
+  location: center;
+  anchor: center;
+  fullscreen: true;
+  cursor: "default";
+  background-color: @background-window;
+}
+
+mainbox {
+  spacing: @mainbox-spacing;
+  margin: @mainbox-margin;
+  background-color: transparent;
+  children: ["dummy", "inputbar", "listview", "message", "dummy"];
+}
+
+inputbar{
+  enabled: true;
+  background-color: transparent;
+  children: ["dummy", "prompt", "dummy"];
+}
+
+dummy {
+  background-color: transparent;
+}
+
+prompt {
+  background-color: transparent;
+  text-color: @foreground-normal;
+  font: @prompt-font;
+}
+
+message {
+  enabled: true;
+  margin: var(message-margin);
+  padding: var(message-padding);
+  border-radius: var(message-border-radius);
+  background-color: var(background-normal);
+  text-color: var(foreground-normal);
+}
+textbox {
+  font: var(textbox-font);
+  background-color: transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+
+listview {
+  expand: false;
+  lines: 1;
+  columns: 5;
+  cycle: true;
+  dynamic: true;
+  scrollbar: false;
+  layout: vertical;
+  fixed-heights: true;
+  fixed-columns: true;
+
+  spacing: @listview-spacing;
+
+
+  background-color: transparent;    
+}
+
+element {
+  enabled: true;
+  padding: var(element-padding);
+  border-radius: var(element-border-radius);
+  background-color: var(background-normal);
+  text-color: var(foreground-normal);
+  cursor: pointer;
+}
+element-text {
+  font: var(element-text-font);
+  background-color: transparent;
+  text-color: inherit;
+  cursor: inherit;
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
+element selected.normal {
+  background-color: var(background-selected);
+  text-color: var(foreground-selected);
+}
+
+

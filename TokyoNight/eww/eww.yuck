@@ -1,0 +1,335 @@
+(include "/home/matteo/.config/eww/widgets/profile_powermenu.yuck")
+(include "/home/matteo/.config/eww/widgets/stats.yuck")
+
+
+; VARS
+(defvar eww "/usr/bin/eww")
+
+; A bunch of system polls
+(defpoll hour :interval "1s" :initial "00" `date +%I`)
+(defpoll mins :interval "1s" :initial "00" `date +%M`)
+(defpoll ampm :interval "5s" :initial "pm" `date +%p`)
+(defpoll daynum :interval "5s" `date +%d`)
+(defpoll month :interval "5s" `date +%b`)
+(defpoll day :interval "5s" `date +%A`)
+
+(defpoll my_date :interval "1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --date)`)
+
+(defpoll outputs :interval "0.1s" :initial "[]" `echo $(python3 ./scripts/workspaces.py) | cut -d "!" -f2`)
+
+(defpoll volpercent :interval ".1s" `echo $(python3 /home/matteo/.config/eww/scripts/my_vol.py get)` )
+(defpoll volicon :interval ".1s" `echo $(python3 /home/matteo/.config/eww/scripts/my_vol.py icon)` )
+(defpoll brightness :interval ".1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --per-brightness)` )
+
+(defpoll title :interval ".5s" `echo $(python3 /home/matteo/.config/eww/scripts/music.py --title)` )
+(defpoll artist :interval ".5s" `echo $(python3 /home/matteo/.config/eww/scripts/music.py --artist)` )
+(defpoll playpause :interval ".2s" `echo $(python3 /home/matteo/.config/eww/scripts/music.py --icon)` )
+(defpoll music_art :interval ".5s" `echo $(python3 /home/matteo/.config/eww/scripts/music.py --art)` )
+(defpoll pos :interval ".3s" `echo $(python3 /home/matteo/.config/eww/scripts/music.py --pos)` )
+(defpoll spot_color :interval "1s" `echo $(python3 /home/matteo/.config/eww/script/music.py --color)` )
+
+(defpoll cpu :interval "1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --cpu)`)
+(defpoll mem :interval "1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --mem)`)
+(defpoll up :interval "1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --up)`)
+(defpoll pack :interval "1s" `pacman -Q | wc -l`)
+
+(defpoll weather :interval "5s" :initial "-°C" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --weather)`)
+(defpoll w_icon :interval "5s" :initial "" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --w_icon)`)
+
+(deflisten workspace "./scripts/bspwmWs.sh")
+(defpoll win :interval ".1s" `echo $(python3 /home/matteo/.config/eww/scripts/sys_info.py --win)`)
+
+
+; MAIN BAR
+
+(defwidget launcher []
+  (box :class ""
+    :orientation "v"
+    :space-evenly true
+    :spacing 0
+    :vexpand true
+    (button :class "icon hov launcher"
+      :onclick "rofi -show drun &"
+      (label :text "" :style "background-color: rgba(0,0,0,0);")))
+)
+
+
+(defwidget clock []
+  
+  (eventbox
+    :onclick "eww open-many --toggle clock_win"
+    (box
+      :class "clock box"
+      :orientation "v"
+      :halign "fill"
+      :valign "fill"
+      :space-evenly false
+      :vexpand false
+      (label :text hour :class "hour")
+      (label :text mins :class "mins")
+      (label :text ampm :class "hour")
+    )))
+
+(defwidget i-workspaces [] ;i3 workspaces
+  (box
+    :orientation "vertical"
+    :valign "start"
+    :class "workspaces"
+    
+    (for output in outputs
+      (box
+        :orientation "vertical"
+        :class "workspace"
+        (box
+          :halign "center"
+          :class "output"
+          :orientation "v"
+          
+          (for wk in "${output['wks']}"
+            (label
+              :text "${wk['focused'] ? '' : ''}"
+              :class "${wk['focused'] ? 'ws_focused' : ''}"
+              
+            )))))))
+
+(defwidget workspaces [] ;BSPWM workspaces
+  (literal :content workspace
+    :vexpand true
+    :valign "fill"
+  )
+)
+
+(defwidget bar_stats []
+  (box
+    :space-evenly false
+    (revealer
+      :reveal statsBool
+      :transition "slideleft"
+      (box :class "b_stats box"
+        :style "margin-right: 16px;"
+        :orientation "h"
+        :spacing 16
+        
+        (box :orientation "h"
+          :space-evenly false
+          :spacing 6
+          (label :style "font-size: 24px;" :text "")
+          (label :text "${cpu}%"))
+        
+        (box :orientation "h"
+          :space-evenly false
+          :spacing 6
+          (label :style "font-size: 24px;" :text "﬙")
+          (label :text "${mem}%"))))
+    (button :class "icon reveal_stat"
+      :onclick "eww update statsBool=${!statsBool}"
+    "")))
+(defvar statsBool false)
+
+(defwidget volume_rev []
+  (eventbox :onhover "eww update volBool=true"
+    :onhoverlost "eww update volBool=false"
+    (box
+      :space-evenly false
+      :orientation "v"
+      :spacing 2
+      :vexpand false
+      
+      (revealer
+        :reveal volBool
+        :transition "slideup"
+        :duration "500ms"
+        (scale
+          :onchange "python3 /home/matteo/.config/eww/scripts/my_vol.py set {}"
+          :height 48
+          :flipped true
+          :class "b-scale"
+          :orientation "vertical"
+          :value volpercent
+          :min 0
+          :max 101
+        :marks true))
+      (eventbox :onclick "python3 /home/matteo/.config/eww/scripts/my_vol.py mute" (label :text volicon :class "stat_icon")))))
+(defvar volBool false)
+
+(defwidget bright_rev []
+  (eventbox :onhover "eww update brightBool=true"
+    :onhoverlost "eww update brightBool=false"
+    (box
+      :space-evenly false
+      :orientation "v"
+      :spacing 2
+      :vexpand false
+      
+      (revealer
+        :reveal brightBool
+        :transition "slideup"
+        :duration "500ms"
+        (scale
+          :onchange "python3 /home/matteo/.config/eww/scripts/sys_info.py --set-bright {}"
+          :height 48
+          :flipped true
+          :class "b-scale"
+          :orientation "vertical"
+          :value brightness
+          :min 0
+        :max 101))
+      (eventbox :onclick "xrandr --output HDMI-A-0 --brightness 1" (label :text "" :class "stat_icon")))))
+(defvar brightBool false)
+
+(defwidget revealers []
+  (box :orientation "v" :spacing 0 :class "bg-alt" :space-evenly false :halign "fill"
+    (bright_rev)
+    (volume_rev)
+  )
+)
+
+(defwidget isplaying []
+  (box :class "bg-alt" :space-evenly false :halign "fill" :orientation "v"
+    (eventbox :onclick "playerctl play-pause" (label :style "color: #7aa2f7;" :class "stat_icon" :text playpause))
+    (eventbox :onclick "python3 /home/matteo/.config/eww/scripts/music.py --switch" (label :class "stat_icon" :style "color: #9ece6a;" :text ""))
+  )
+)
+
+(defwidget v_bar_stats []
+  (box :space-evenly false :halign "fill" :orientation "v"
+    (revealer :reveal qaBool
+      :space-evenly false
+      :halign "fill"
+      :transition "slidedown"
+      (box :class "bg-alt" :orientation "v" :space-evenly false :halign "fill"
+        (label :class "stat_icon" :text "" :style "color: #f7768e;")
+        (label :text {round(cpu, 0)})
+
+        (label :class "stat_icon" :text "﬙" :style "color: #e0af68;")
+        (label :text {round(mem, 0)})
+      )
+    )
+  )
+)
+
+(defwidget quick_app []
+  (box :orientation "v"
+    (revealer
+      :reveal qaBool
+      :space-evenly false
+      :halign "fill"
+      :transition "slideup"
+      (box :orientation "v"
+        :class "bg-alt"
+        (eventbox :onclick "firefox &" (label :style "color: #ff9e64" :class "stat_icon" :text "" ))
+        (eventbox :onclick "firefox -P Scuola &" (label :style "color: #f7768e" :class "stat_icon" :text ""))
+        (eventbox :onclick "firefox web.whatsapp.com" (label :style "color: #9ece6a" :class "stat_icon" :text ""))
+        (eventbox :onclick "discord &" (label :style "color: #7aa2f7" :class "stat_icon" :text "󰙯"))
+        (eventbox :onclick "firefox reddit.com &" (label :style "color: #ff9e64" :class "stat_icon" :text ""))
+        (eventbox :onclick "firefox aternos.org/servers &" (label :style "color: #9ece6a" :class "stat_icon" :text "󰍳"))
+      )
+    )
+  )
+)
+(defvar qaBool true)
+
+(defwidget top [] ;LEFT
+  (box
+    :class "top"
+    :orientation "v"
+    :halign "fill"
+    :valign "start"
+    :vexpand true
+    :hexpand false
+    :space-evenly false
+    :spacing 16
+    (workspaces)
+))
+
+(defwidget mid []
+  (box
+    :class "mid"
+    :orientation "v"
+    :halign "fill"
+    :valign "center"
+    :vexpand true
+    :hexpand false
+    :space-evenly false
+    :spacing 16
+
+    (v_bar_stats)
+    (quick_app)
+  )
+)
+
+(defwidget bottom [] ;RIGHT
+  (box
+    :class "bottom"
+    :orientation "v"
+    :halign "fill"
+    :valign "end"
+    :vexpand false
+    :hexpand false
+    :space-evenly false
+    :spacing 16
+    
+    (isplaying)
+    (revealers)
+    (clock)))
+
+(defwidget bar []
+  (box
+    :class "bar"
+    :orientation "v"
+    :halign "fill"
+    :valign "fill"
+    :vexpand false
+    :hexpand false
+    (top)
+    (mid)
+    (bottom)))
+
+
+; WINDOWS
+(defwindow ewwbar
+  :monitor 0
+  :geometry (geometry
+    :x "8px" :y "0px"
+    :width "32px" :height "1040px"
+    :anchor "left center"
+  )
+  
+  :stacking "bg"
+  :focusable true
+  :vexpand false
+  :hexpand false
+  
+  :wm-ignore false
+  :reserve (struts :distance "44px" :side "left")
+  :exclusive true
+  
+  (bar))
+
+(defwindow clock_win
+  :monitor 0
+  :geometry (geometry
+    :x "54px" :y "-20"
+    :width "100px" :height "100px"
+    :anchor "left bottom"
+  )
+  :stacking "bg"
+  :focusable true
+  :wm-ignore true
+  :vexpand true
+  :hexpand false
+  (clock_widgets))
+
+(defwindow stats_win
+  :monitor 0
+  :geometry (geometry
+    :x "54px" :y "20"
+    :width "100px" :height "100px"
+    :anchor "left top"
+  )
+  :stacking "bg"
+  :focusable true
+  :wm-ignore true
+  :vexpand true
+  :hexpand false
+  (stats_widgets))

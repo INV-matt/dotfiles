@@ -1,0 +1,87 @@
+configuration {
+    display-drun: "App";
+    display-window: "Win";
+    drun-display-format: "{icon} {name}";
+    font: "JetBrainsMono Nerd 12";
+    modi: "window,drun,run";
+    show-icons: false;
+    icon-theme: "Papirus";
+}
+
+//@import "~/.cache/wal/colors-rofi-dark"
+@import "~/.config/rofi/themes/tokyo-night.rasi"
+
+*{
+   
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+window {
+    width: 20%;
+    border: 2px;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+mainbox {
+    //height: 20%;
+    background-color: transparent;
+}
+
+element {
+    padding: 30 10;
+    text-color: @fg-alt;
+    border-radius: 4px;
+    border: 0;
+    background-color: @bg-alt;
+}
+
+
+element-text {
+    background-color: inherit;
+    text-color: inherit;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    font: "JetBrainsMono Nerd 24";
+}
+
+element-icon {
+    size: 50;
+}
+
+entry {
+    background-color: @bg-alt;
+    padding: 32;
+    text-color: @fg;
+}
+
+inputbar{
+    children: [prompt, entry];
+    enabled: false;
+}
+
+prompt {
+    background-color: @bg;
+    padding: 12;
+    text-color: @fg;
+    font: "Hack Bold 10";
+}
+
+listview {
+    lines: 1;
+    columns: 4;
+    background-color: @bg;    
+    fixed-height: false;
+}
+
+element.selected.normal {
+    background-color: @bg;
+    border: 0;
+    border-color: @bg-alt;
+    text-color:       @fg;
+}
