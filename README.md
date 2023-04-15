@@ -1,7 +1,7 @@
 # My dotfiles
 ## Tokyo Night
 
-![Image]()
+![Image](TokyoNight/assets/TokyoNight.png)
 - **WM**: [bspwm](https://github.com/baskerville/bspwm) 
 - **Compostor**: [picom](https://github.com/yshui/picom)
 - **Shell**: zsh + [p10k](https://github.com/romkatv/powerlevel10k)
@@ -10,5 +10,5 @@
 - **Launcher**: [rofi](https://github.com/davatorium/rofi)
 - **Notifs**: [dunst](https://github.com/dunst-project/dunst)
 - **Font**: [Fantasque](https://www.nerdfonts.com/font-downloads)
-- **IDE**: [nvim](https://github.com/INV-matt/nvim)
+- **Editor**: [nvim](https://github.com/INV-matt/nvim)
 - [**Wallpaper**](https://wallhaven.cc/w/exo2gr)
