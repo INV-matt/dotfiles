@@ -1,7 +1,7 @@
 from os import popen, getenv
 import sys, psutil, time, requests
-lat=45.631020
-lon=9.989230
+lat=0
+lon=0
 key=getenv('OWM_KEY')
 URL = f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=metric'
 
