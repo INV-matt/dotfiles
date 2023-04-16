@@ -1,0 +1,122 @@
+* {
+  --bg0: #1a1b26;
+  --bg1: #24283b;
+  --bg2: #414868;
+  --fg0: #c0caf5;
+  --fg1: #a9b1d6;
+  --fg2: #9aa5ce;
+  
+  --red: #f7768e;
+  --orange: #ff9e64;
+  --yellow: #e0af68;
+  --green: #9ece6a;
+  --cyan: #73daca;
+  --l_cyan: #b4f9f8;
+  --l_blue: #7dcfff;
+  --blue: #7aa2f7;
+  --violet: #bb9af7;
+
+  --abg0: #1a1b26bf;
+
+}
+
+/* Menu Bar */
+#toolbar-menubar {
+  -moz-box-ordinal-group: 3 !important;
+}
+
+/* Tabs bar */
+#TabsToolbar {
+  -moz-box-ordinal-group: 1 !important;
+  background: var(--bg0) !important;
+}
+
+#firefox-view-button {
+  display: none !important;
+}
+
+/* Design of the plus/newtab button */
+toolbar
+  #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover
+  > .toolbarbutton-icon,
+toolbar
+  #new-tab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover
+  > .toolbarbutton-icon {
+  border: 0 !important;
+  border-radius: 8px !important;
+  background-image: none !important;
+  background-color: var(--bg1) !important;
+}
+
+
+.tab-close-button:not(:hover) {
+  color: transparent !important;
+  background: transparent !important;
+}
+
+.tab-close-button:hover {
+  background: var(--bg1) !important;
+}
+
+.tabbrowser-tab[fadein]:not([pinned]) {
+  max-width: 160px !important; /* 135px */
+  min-width: 96px !important;
+  /*transition:none;
+		transition: min-width 300ms ease-out , max-width 100ms ease-out !important;*/
+}
+
+.tab-background, .tab-content {
+  border-radius: 16px !important;
+}
+
+
+/* Url bar */
+#nav-bar {
+  -moz-box-ordinal-group: 0 !important;
+  background: var(--bg0) !important;
+}
+
+#urlbar {
+  background: transparent !important;
+}
+
+#urlbar:not([open]), #urlbar[focused] {
+  border-radius: 32px;
+}
+
+
+#urlbar-background {
+  background: var(--abg0) !important; 
+}
+
+#urlbar-input-container {
+  color: var(--fg0);
+}
+
+.urlbarView {
+
+}
+
+.urlbarView-row {
+  color: var(--fg0) !important;
+}
+.urlbarView-row .urlbarView-url {
+  color: var(--l_blue) !important;
+}
+
+.search-one-offs {
+  display: none !important;
+}
+
+
+#commonDialog, #commonDialogWindow, #dialogFrame {
+  background: var(--bg1) !important;
+  border-radius: 16px !important;
+}
+#titleContainer > * {
+  color: var(--fg0) !important;
+}
+
+.devtools-toolbox-side-iframe {
+  background: var(--abg0) !important;
+}
